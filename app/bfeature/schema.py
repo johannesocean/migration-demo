@@ -4,11 +4,11 @@ Created on 2022-12-08 15:34
 """
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel
+from app.core.db.base import AppBaseModel
 
 
-class BBase(BaseModel):
-    number: Optional[float]
+class BBase(AppBaseModel):
+    number: Optional[int]
 
 
 class BSchema(BBase):

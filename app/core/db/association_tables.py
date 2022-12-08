@@ -8,7 +8,7 @@ from sqlalchemy.sql.schema import ForeignKey, Table
 from app.core.db.database import Base
 
 
-class FeatureABModel(Base):
+class ABModel(Base):
     __tablename__ = "a_b"
 
     a_id = Column(Integer, primary_key=True)

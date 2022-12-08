@@ -2,7 +2,7 @@
 Created on 2022-12-08 15:34
 @author: johannes
 """
-from sqlalchemy import Column, DateTime, Float, Integer
+from sqlalchemy import Column, DateTime, Integer
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
@@ -15,7 +15,7 @@ class BModel(Base):
 
     id = Column(Integer, primary_key=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
-    number = Column(Float, nullable=True)
+    number = Column(Integer, nullable=True)
 
     a = relationship(
         "AModel", secondary=ab_table, back_populates="b"
