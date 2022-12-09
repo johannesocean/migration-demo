@@ -7,11 +7,11 @@ from typing import Optional
 from app.core.db.base import AppBaseModel
 
 
-class BBase(AppBaseModel):
-    number: Optional[int]
+class MoonBase(AppBaseModel):
+    moon_number: Optional[int]
 
 
-class BSchema(BBase):
+class MoonSchema(MoonBase):
     id: int
     created_at: datetime
 

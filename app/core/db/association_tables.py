@@ -8,17 +8,17 @@ from sqlalchemy.sql.schema import ForeignKey, Table
 from app.core.db.database import Base
 
 
-class ABModel(Base):
-    __tablename__ = "a_b"
+class SunMoonModel(Base):
+    __tablename__ = "sun_moon"
 
-    a_id = Column(Integer, primary_key=True)
-    b_id = Column(Integer, primary_key=True)
+    sun_id = Column(Integer, primary_key=True)
+    moon_id = Column(Integer, primary_key=True)
 
 
-ab_table = Table(
-    "a_b",
+sunmoon_table = Table(
+    "sun_moon",
     Base.metadata,
-    Column("a_id", ForeignKey("a.id"), primary_key=True),
-    Column("b_id", ForeignKey("b.id"), primary_key=True),
+    Column("sun_id", ForeignKey("sun.id"), primary_key=True),
+    Column("moon_id", ForeignKey("moon.id"), primary_key=True),
     extend_existing=True
 )

@@ -6,17 +6,17 @@ from sqlalchemy import Column, DateTime, Integer
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
-from app.core.db.association_tables import ab_table
+from app.core.db.association_tables import sunmoon_table
 from app.core.db.database import Base
 
 
-class BModel(Base):
-    __tablename__ = "b"
+class SunModel(Base):
+    __tablename__ = "sun"
 
     id = Column(Integer, primary_key=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
-    number = Column(Integer, nullable=True)
+    sun_number = Column(Integer, nullable=True)
 
-    a = relationship(
-        "AModel", secondary=ab_table, back_populates="b"
+    moon = relationship(
+        "MoonModel", secondary=sunmoon_table, back_populates="sun"
     )

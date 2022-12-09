@@ -7,11 +7,11 @@ from typing import Optional
 from app.core.db.base import AppBaseModel
 
 
-class ABase(AppBaseModel):
-    number: Optional[int]
+class SunBase(AppBaseModel):
+    sun_number: Optional[int]
 
 
-class ASchema(ABase):
+class SunSchema(SunBase):
     id: int
     created_at: datetime
 
