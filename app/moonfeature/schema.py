@@ -4,7 +4,7 @@ Created on 2022-12-08 15:34
 """
 from datetime import datetime
 from typing import Optional
-from app.core.db import AppBaseModel
+from app.core.db.database import AppBaseModel
 
 
 class MoonBase(AppBaseModel):
