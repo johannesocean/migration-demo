@@ -5,14 +5,14 @@ Created on 2022-12-08 15:25
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from app.sunfeature import crud
-from app.sunfeature.schema import SunSchema, SunBase
+from app.sun import crud
+from app.sun.schema import SunSchema, SunBase
 from app.core.db.database import get_db
 
 
 router = APIRouter(
-    prefix="/sunfeature",
-    tags=["sunfeature"],
+    prefix="/sun",
+    tags=["sun"],
 )
 
 

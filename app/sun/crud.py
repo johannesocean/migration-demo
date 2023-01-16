@@ -6,10 +6,10 @@ from random import sample
 from typing import List
 from sqlalchemy.orm import Session
 
-from app.sunfeature.model import SunModel
-from app.sunfeature.schema import SunBase
-from app.moonfeature.schema import MoonBase
-from app.moonfeature.crud import upsert_moon
+from app.sun.model import SunModel
+from app.sun.schema import SunBase
+from app.moon.schema import MoonBase
+from app.moon.crud import upsert_moon
 
 
 def get_sun(db: Session, sun_number: int):

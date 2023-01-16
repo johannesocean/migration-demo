@@ -4,8 +4,8 @@ Created on 2022-12-08 15:34
 """
 from sqlalchemy.orm import Session
 
-from app.moonfeature.model import MoonModel
-from app.moonfeature.schema import MoonBase
+from app.moon.model import MoonModel
+from app.moon.schema import MoonBase
 
 
 def get_moon(db: Session, moon_number: int):
