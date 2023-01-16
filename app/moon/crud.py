@@ -9,7 +9,7 @@ from app.moon.schema import MoonBase
 
 
 def get_moon(db: Session, moon_number: int):
-    return db.query(MoonModel).filter(MoonModel.number == moon_number).first()
+    return db.query(MoonModel).filter(MoonModel.moon_number == moon_number).first()
 
 
 def upsert_moon(db: Session, moon: MoonBase):
