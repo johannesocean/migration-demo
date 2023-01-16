@@ -1,7 +1,7 @@
 # Sun and moon migration-demo
 
 🤔 Why?
---------------------
+---------
 Demonstrate how to setup database migration using SQLalchemy and alembic.
 
 🛠️ Requirements
@@ -9,6 +9,7 @@ Demonstrate how to setup database migration using SQLalchemy and alembic.
 See the requirements.txt file.
 - Python >= 3.9
 - sqlalchemy
+- alembic
 - fastapi
 - pydantic
 - uvicorn
