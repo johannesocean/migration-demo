@@ -8,7 +8,6 @@ from app import BASE_DIR
 
 
 class Settings(BaseSettings):
-    API_KEY: str
     DB_CONNECTION_STRING: str
 
     class Config:

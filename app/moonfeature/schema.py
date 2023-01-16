@@ -3,12 +3,11 @@ Created on 2022-12-08 15:34
 @author: johannes
 """
 from datetime import datetime
-from typing import Optional
-from app.core.db.database import AppBaseModel
+from pydantic import BaseModel
 
 
-class MoonBase(AppBaseModel):
-    moon_number: Optional[int]
+class MoonBase(BaseModel):
+    moon_number: int
 
 
 class MoonSchema(MoonBase):

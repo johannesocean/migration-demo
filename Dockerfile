@@ -2,9 +2,7 @@ FROM python:3.9
 
 WORKDIR /api
 
-COPY app app
-COPY ./requirements.txt requirements.txt
-COPY ./alembic.ini alembic.ini
+COPY . .
 
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 

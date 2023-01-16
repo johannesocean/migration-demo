@@ -1,4 +1,6 @@
-# Comment blocks have been tried with no luck ;)
+#
+# Blocks of comments have been tried, with no luck ;)
+#
 
 #networks:
 #  default:
@@ -18,7 +20,6 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
   web:
     environment:
-      API_KEY: ${API_KEY}
       DB_CONNECTION_STRING: ${DB_CONNECTION_STRING}
 #      DB_CONNECTION_STRING: postgresql://testuser:testpwd@db:5432/testuser
     build:
@@ -37,8 +38,9 @@ services:
     links:
       - "db:database"
     environment:
-      - DB_URL=postgresql://testuser:testpwd@db:5432/testuser
-      - DB_CONNECTION_STRING=postgresql://testuser:testpwd@db:5432/testuser
+      DB_CONNECTION_STRING: ${DB_CONNECTION_STRING}
+#      - DB_CONNECTION_STRING=postgresql://testuser:testpwd@db:5432/testuser
+#      - DB_URL=postgresql://testuser:testpwd@db:5432/testuser
 #volumes:
 #  db:
 #    driver: local

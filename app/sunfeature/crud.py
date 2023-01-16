@@ -2,38 +2,43 @@
 Created on 2022-12-08 15:34
 @author: johannes
 """
+from random import sample
+from typing import List
 from sqlalchemy.orm import Session
 
 from app.sunfeature.model import SunModel
 from app.sunfeature.schema import SunBase
-from app.core.db.association_tables import SunMoonModel
-
-COLUMNS = {'created_at', 'sun_number'}
+from app.moonfeature.schema import MoonBase
+from app.moonfeature.crud import upsert_moon
 
 
 def get_sun(db: Session, sun_number: int):
     return db.query(SunModel).filter(SunModel.sun_number == sun_number).first()
 
 
-def get_sun_from_id(db: Session, sun_id: int):
-    return db.query(SunModel).filter(SunModel.id == sun_id).first()
+def create_sun(db: Session, sun: SunBase, moons: List[MoonBase]):
+    db_sun = SunModel(**sun.dict())
+    for moon in moons:
+        updated_moon = upsert_moon(db, moon)
+        if updated_moon not in db_sun.moon:
+            db_sun.moon.append(updated_moon)
+    db.add(db_sun)
+    db.commit()
+    db.refresh(db_sun)
+    return db_sun
 
 
-def get_sun_ids(db: Session, moon_id):
-    query = db.query(SunMoonModel).filter(SunMoonModel.moon_id == moon_id).all()
-    return [sun.id for sun in query]
+def create_sun_extracted(db: Session, sun: SunBase):
+    moons = [
+        MoonBase(**ent) for ent in [
+            {'moon_number': sample(range(1, 1000), 10)}
+        ]
+    ]
+    return create_sun(db=db, sun=sun, moons=moons)
 
 
-def upsert_sun(db: Session, sun: SunBase):
-    db_sun = get_sun(db=db, sun_number=sun.sun_number)
-    if db_sun:
-        return db_sun
-    else:
-        try:
-            db_sun = SunModel(**{c: sun.get(c) for c in COLUMNS})
-            db.add(db_sun)
-            db.commit()
-            db.refresh(db_sun)
-            return db_sun
-        except Exception as e:
-            raise e
+def create_suns(db: Session, suns):
+    return [
+        create_sun_extracted(db=db, sun=SunBase(**sun.dict))
+        for sun in suns
+    ]

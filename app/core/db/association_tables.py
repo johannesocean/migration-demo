@@ -9,10 +9,10 @@ from app.core.db.database import Base
 
 
 class SunMoonModel(Base):
-    __tablename__ = "sun_moon"
+    __tablename__: str = "sun_moon"
 
-    sun_id = Column(Integer, primary_key=True)
-    moon_id = Column(Integer, primary_key=True)
+    sun_id: int = Column(Integer, primary_key=True)
+    moon_id: int = Column(Integer, primary_key=True)
 
 
 sunmoon_table = Table(
