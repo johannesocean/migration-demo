@@ -28,17 +28,20 @@ services:
     ports:
       - 2512:2512
     links:
-      - "db:database"
+      - db
   alembic:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: "alembic"
-    command: "alembic upgrade head"
+    command: bash -c "alembic revision --autogenerate; alembic upgrade head"
     links:
-      - "db:database"
+      - db
     environment:
       DB_CONNECTION_STRING: ${DB_CONNECTION_STRING}
+    depends_on:
+      - web
+      - db
 #      - DB_CONNECTION_STRING=postgresql://testuser:testpwd@db:5432/testuser
 #      - DB_URL=postgresql://testuser:testpwd@db:5432/testuser
 #volumes:
